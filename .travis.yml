@@ -1,0 +1,25 @@
+language: go
+
+go:
+  - 1.x
+
+os:
+  - linux
+
+env:
+  global:
+    - GO111MODULE=on
+    - GOFLAGS="-mod=readonly"
+    
+go_import_path: github.com/Oppodelldog/jsonrpc-remote-cli
+
+cache:
+  directories:
+    - $GOPATH/pkg/mod
+
+services:
+  - docker
+
+script:
+  - docker pull golang:1.17.3
+  - make ci
