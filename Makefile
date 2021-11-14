@@ -16,6 +16,7 @@ build-server: ## builds the json rpc server
 build-all: build-server build-client  ## builds server and client
 
 ci:
+	go mod download
 	go run test/main.go
 
 # Self-Documented Makefile see https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
