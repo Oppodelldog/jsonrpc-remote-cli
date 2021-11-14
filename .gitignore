@@ -1,2 +1,4 @@
 cmd/client
 build
+.idea
+test-logs
