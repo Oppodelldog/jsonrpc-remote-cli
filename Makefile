@@ -16,6 +16,7 @@ build-server: ## builds the json rpc server
 build-all: build-server build-client  ## builds server and client
 
 ci:
+	env
 	go mod download
 	cd test && go mod download
 	cd test && go run main.go
