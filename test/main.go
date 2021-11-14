@@ -5,6 +5,8 @@ import (
 	"github.com/Oppodelldog/dockertest"
 	"os"
 	"os/signal"
+	"path"
+	"path/filepath"
 	"syscall"
 	"time"
 )
@@ -19,8 +21,11 @@ func main() {
 	} else {
 		val, err := os.Getwd()
 		panicOnErr(err)
-		projectDir = val
+		parentOfWd := filepath.Dir(val)
+		projectDir = parentOfWd
 	}
+
+	fmt.Printf("START BUILD IN '%s'\n", projectDir)
 
 	fmt.Println("NEW DOCKERTEST SESSION")
 	test, err := dockertest.NewSession()
@@ -34,7 +39,7 @@ func main() {
 	var testResult = TestResult{ExitCode: -1}
 	defer cleanup(test, &testResult)
 
-	test.SetLogDir("test-logs")
+	test.SetLogDir(path.Join(projectDir, "test-logs"))
 
 	net, err := test.CreateBasicNetwork("test-network").Create()
 	panicOnErr(err)
