@@ -13,8 +13,14 @@ const waitingTimeout = time.Minute
 const goVersion = "golang:1.17.3"
 
 func main() {
-	projectDir, err := os.Getwd()
-	panicOnErr(err)
+	var projectDir string
+	if val, ok := os.LookupEnv("TRAVIS_BUILD_DIR"); ok {
+		projectDir = val
+	} else {
+		val, err := os.Getwd()
+		panicOnErr(err)
+		projectDir = val
+	}
 
 	fmt.Println("NEW DOCKERTEST SESSION")
 	test, err := dockertest.NewSession()
