@@ -16,6 +16,7 @@ const goVersion = "golang:1.17.3"
 
 func main() {
 	var projectDir string
+	var goPath = os.Getenv("GOPATH")
 	if val, ok := os.LookupEnv("TRAVIS_BUILD_DIR"); ok {
 		projectDir = val
 	} else {
@@ -48,6 +49,8 @@ func main() {
 		Image(goVersion).
 		Connect(net).
 		WorkingDir("/app").
+		Env("GOPATH", goPath).
+		Mount(goPath, goPath).
 		Mount(projectDir, "/app")
 
 	api, err := basicConfiguration.NewContainerBuilder().
