@@ -59,7 +59,7 @@ func main() {
 		Build()
 	panicOnErr(err)
 
-	tests, err := basicConfiguration.NewContainerBuilder().
+	client, err := basicConfiguration.NewContainerBuilder().
 		Name("client").
 		CmdArgs("bash", "-c", `go run cmd/generator/main.go --client-folder=cmd/client --endpoint-uri=http://api:8080/rpc && \
 		go run cmd/client/main.go add -a=9990 -b=7`).
@@ -76,19 +76,19 @@ func main() {
 	panicOnErr(err)
 
 	fmt.Println("START CLIENT CONTAINER")
-	err = tests.Start()
+	err = client.Start()
 	panicOnErr(err)
 
-	err = <-test.NotifyContainerLogContains(tests, waitingTimeout, "9997")
+	err = <-test.NotifyContainerLogContains(client, waitingTimeout, "9997")
 	panicOnErr(err)
 	fmt.Println("WAIT FOR CLIENT RPC CALL TO SUCCEED")
 
-	<-test.NotifyContainerExit(tests, waitingTimeout)
+	<-test.NotifyContainerExit(client, waitingTimeout)
 
-	testResult.ExitCode, err = tests.ExitCode()
+	testResult.ExitCode, err = client.ExitCode()
 	panicOnErr(err)
 
-	test.DumpContainerLogsToDir(api, tests)
+	test.DumpContainerLogsToDir()
 }
 
 func cancelSessionOnSigTerm(session *dockertest.Session) {
