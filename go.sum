@@ -1,5 +1,5 @@
-github.com/Oppodelldog/cmdsrv v0.0.0-20211114185630-05156d5fc7dc h1:V/7MXs94U0n2UfEhTYz1zzb0Y5kYSgimYkQjk0blqZ4=
-github.com/Oppodelldog/cmdsrv v0.0.0-20211114185630-05156d5fc7dc/go.mod h1:Ij1qhPwWQhhUXhpoWCtU5zgzfsA035GD3gArCgTG0kA=
+github.com/Oppodelldog/cmdsrv v0.0.0-20211115220130-180aafcee803 h1:bNO8XCPfU3dWcHfDcYiTT5lgjaIJuHiSD5oJDSFUMn8=
+github.com/Oppodelldog/cmdsrv v0.0.0-20211115220130-180aafcee803/go.mod h1:Ij1qhPwWQhhUXhpoWCtU5zgzfsA035GD3gArCgTG0kA=
 github.com/andybalholm/brotli v1.0.1/go.mod h1:loMXtMfwqflxFJPmdbJO0a3KNoPuLBgiu3qAvBg8x/Y=
 github.com/andybalholm/brotli v1.0.3/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/bool64/dev v0.1.17/go.mod h1:cTHiTDNc8EewrQPy3p1obNilpMpdmlUesDkFTF2zRWU=

@@ -3,7 +3,7 @@ module github.com/Oppodelldog/jsonrpc-remote-cli
 go 1.17
 
 require (
-	github.com/Oppodelldog/cmdsrv v0.0.0-20211114185630-05156d5fc7dc
+	github.com/Oppodelldog/cmdsrv v0.0.0-20211115220130-180aafcee803
 	github.com/swaggest/openapi-go v0.2.13
 	github.com/swaggest/usecase v1.1.0
 )
