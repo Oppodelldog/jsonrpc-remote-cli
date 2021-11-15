@@ -14,7 +14,10 @@ func main() {
 		clientFolder, endpointUri = processFlags()
 	)
 
-	fmt.Printf("generating client in '%s'\n", clientFolder)
+	wd, err := os.Getwd()
+	assertNoErr(err)
+
+	fmt.Printf("generating client in wd '%s'/'%s'\n", wd, clientFolder)
 
 	assertNoErr(clientgen.SourceCode(clientFolder, endpointUri, interactors))
 }
