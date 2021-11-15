@@ -13,6 +13,9 @@ func main() {
 		interactors               = usecases.Interactors()
 		clientFolder, endpointUri = processFlags()
 	)
+
+	fmt.Printf("generating client in '%s'\n", clientFolder)
+
 	assertNoErr(clientgen.SourceCode(clientFolder, endpointUri, interactors))
 }
 
